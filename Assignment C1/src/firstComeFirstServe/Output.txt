@@ -1,0 +1,32 @@
+Enter number of processes
+4
+Enter process name and service(burst) time for 4 : 
+name: 
+p1
+Service(Burst) time: 
+400
+name: 
+p2
+Service(Burst) time: 
+600
+name: 
+p3
+Service(Burst) time: 
+200
+name: 
+p4
+Service(Burst) time: 
+500
+Name	Ts	Tw	TaT
+p1	400	0	400
+p2	600	400	1000
+p3	200	1000	1200
+p4	500	1200	1700
+
+Gantt_Chart is: 
+
+0	400		1000		1200		1700	
+---------------------------------------------------------
+p1	|	p2	|	p3	|	p4	|	
+---------------------------------------------------------
+
