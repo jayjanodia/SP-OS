@@ -20,6 +20,10 @@ class Process{
 	{
 		System.out.println(name+ "\t"+ Integer.toString(ts)+ "\t"+ Integer.toString(tw)+ "\t"+ Integer.toString(tat));
 	}
+	public void display_name()		//remove if you dont want gantt chart
+	{
+		System.out.print(name+ "\t|"+ "\t");
+	}
 };
 
 public class FCFS {
@@ -53,9 +57,10 @@ public class FCFS {
 	{
 		//display all the processes
 		System.out.println("Name"+ "\tTs"+ "\tTw"+ "\tTaT");
-		while(!queue.isEmpty())
+		//while(!queue.isEmpty())//use if you are fine with popping from queue. uncomment queue.remove(). comment for loop
+		for(Process pro: queue)	//alternative method if you don't want to pop queue. useful in retaining values in queue if they want to be used again
 		{
-			queue.remove().display_process();	//pops variables to print them
+			/*queue.remove().*/pro.display_process();	//pops variables to print them
 		}
 	}
 	
@@ -70,11 +75,31 @@ public class FCFS {
 			tw=pro.tat;
 		}
 	}
+	
+	public void Gantt_Chart()		//remove if you dont want gantt chart
+	{
+		System.out.println("\nGantt_Chart is: \n");
+		System.out.print(0);
+		for (Process pro: queue)
+		{
+			System.out.print("\t");
+			System.out.print(pro.tat+ "\t");
+		}
+		System.out.println("\n---------------------------------------------------------");
+		while(!queue.isEmpty())
+		{
+			queue.remove().display_name();
+		}
+		System.out.println();
+		System.out.println("---------------------------------------------------------");
+	}
+	
 	public static void main(String args[])
 	{
 		FCFS fcfs= new FCFS();
 		fcfs.get_Processes();
 		fcfs.Schedule();
 		fcfs.Display();
+		fcfs.Gantt_Chart();		//remove if you dont want gantt chart
 	}
 }
